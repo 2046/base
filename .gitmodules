@@ -1,0 +1,3 @@
+[submodule "lib/events"]
+	path = lib/events
+	url = git@github.com:2046/events.git

@@ -2,6 +2,48 @@
 
 Base 是使用 Class 创建的一个基础类，默认混入了 Events 模块，用 Base派生出来的子类，默认带有 Class, Events 模块的功能，且拥有``get``，``set``，``destroy``方法
 
+##使用
+
+下载项目中 dist 目录里面的文件，并配置好模块相关信息（如：路径，别名），使用如下示例代码即可开始使用。
+
+```
+seajs.use(['base'], function(Base){
+    var Test = Base.extend({
+        attrs : {
+            name : 'test'
+        },
+        setup : function(){
+            console.log('init');
+        }
+    });
+    
+    var test = new Test({
+        say : 'hello world'
+    }); // init
+    
+    test.get('name'); // test
+    test.get('say'); // hello world
+});
+
+require(['base'], function(Base){
+    var Test = Base.extend({
+        attrs : {
+            name : 'test'
+        },
+        setup : function(){
+            console.log('init');
+        }
+    });
+    
+    var test = new Test({
+        say : 'hello world'
+    }); // init
+    
+    test.get('name'); // test
+    test.get('say'); // hello world
+});
+```
+
 ##使用说明
 
 ###``Base.extend([properties])``

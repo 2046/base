@@ -37,7 +37,7 @@ pig.get('name'); // Iron
 
 ###``properties``集合中特殊属性
 
-``attrs``属性，类定义时，通过设置 attrs 来定义该类有哪些属性，它的值只能是对象
+####``attrs``属性，类定义时，通过设置 attrs 来定义该类有哪些属性
 
 ```
 var Demo = Base.extend({
@@ -50,6 +50,29 @@ var Demo = Base.extend({
         value6 : {a : 'a'}
         value7 : function(){}
         value8 : null
+    }
+});
+```
+
+####``setup``属性，提供给子类的初始化方法，可以在此处理更多初始化信息
+
+```
+var Demo = Base.extend({
+    setup : function(){
+        console.log('hello');
+    }
+});
+```
+
+####``_onChangeX``属性，在初始化时，会自动将 _onChangeX 方法注册到实例的 change:x 事件上
+
+```
+var Demo = base.extend({
+    attrs : {
+        test : 'demo'
+    },
+    _onChangeTest : function(val, prev, key){
+        console.log(val, prev, key);
     }
 });
 ```

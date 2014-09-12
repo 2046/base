@@ -1,13 +1,13 @@
 'use strict'
 
-var Base, Class, Events, Attribute, util;
+var Base, Class, Events, util;
 
 util = require('./util');
 Class = require('class');
 Events = require('events');
 
 Base = new Class({
-    Implements : [Events, Attribute],
+    Implements : [Events],
     initialize : function(opt){
         this.attrs = {};
         mergeInheritedAttrs(this);

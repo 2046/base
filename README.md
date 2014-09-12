@@ -19,7 +19,6 @@ var Pig = Base.extend({
         console.log('我是' + this.get('name'));
     },
     setup : function(){
-        // 当实例化完毕之后，如果该实例有 setup方法，会自动调用 setup 方法
         console.log('initialized');
     }
 });
@@ -75,4 +74,41 @@ var Demo = base.extend({
         console.log(val, prev, key);
     }
 });
+```
+
+###```get(key)```
+
+获取某个属性值
+
+```
+var T = Base.extend({
+    attrs : {
+        name : 'superMan'
+    }
+});
+
+var t = new T();
+t.get('name'); // superMan
+```
+
+###```set(key, value, options)```
+
+设置某个属性值
+
+当 options.silent 的值为 true 时，不会触发属性值对应的 change 事件
+
+```
+var T = Base.extend({
+    attrs : {
+        name : 'superMan'
+    },
+    _onChangeName : function(val){
+        conaole.log('change:' + val);
+    }
+});
+
+var t = new T();
+t.get('name'); // superMan
+t.set('name', 'Iron'); // change:Iron
+t.set('name', 'Arrow', {silent : true}); // 没有触发 change 事件
 ```

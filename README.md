@@ -4,7 +4,7 @@ Base 是使用 Class 创建的一个基础类，默认混入了 Events 模块，
 
 ##使用说明
 
-###``Base.extend(properties)``
+###``Base.extend([properties])``
 
 基于Base创建子类
 

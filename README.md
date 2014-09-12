@@ -76,7 +76,7 @@ var Demo = base.extend({
 });
 ```
 
-###```get(key)```
+###``get(key)``
 
 获取某个属性值
 
@@ -91,7 +91,7 @@ var t = new T();
 t.get('name'); // superMan
 ```
 
-###```set(key, value, options)```
+###``set(key, value, options)``
 
 设置某个属性值
 
@@ -111,4 +111,25 @@ var t = new T();
 t.get('name'); // superMan
 t.set('name', 'Iron'); // change:Iron
 t.set('name', 'Arrow', {silent : true}); // 没有触发 change 事件
+```
+
+###``destroy()``
+
+注销实例上的所有事件并删除实例上所有的属性
+
+```
+var T = Base.extend({
+    attrs : {
+        name : 'superMan'
+    },
+    _onChangeName : function(val){
+        console.log('change:' + val);
+    }
+});
+
+var t = new T();
+
+t.destroy();
+t.attrs // undefined
+t.trigger('change:name'); // 无效果
 ```

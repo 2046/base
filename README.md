@@ -40,14 +40,16 @@ pig.get('name'); // Iron
 ``attrs``属性，类定义时，通过设置 attrs 来定义该类有哪些属性，它的值只能是对象
 
 ```
-attrs : {
-    value1 : 1,
-    value2 : 'a',
-    value3 : true,
-    value4 : /a/g
-    value5 : [a,b,c]
-    value6 : {a : 'a'}
-    value7 : function(){}
-    value8 : null
-}
+var Demo = Base.extend({
+    attrs : {
+        value1 : 1,
+        value2 : 'a',
+        value3 : true,
+        value4 : /a/g
+        value5 : [a,b,c]
+        value6 : {a : 'a'}
+        value7 : function(){}
+        value8 : null
+    }
+});
 ```

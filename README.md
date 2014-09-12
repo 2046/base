@@ -135,3 +135,57 @@ t.destroy();
 t.attrs // undefined
 t.trigger('change:name'); // 无效果
 ```
+
+###一个完整的例子
+
+```
+var Base = require('base');
+
+var T = Base.extend({
+    attrs : {
+        name : '',
+        color : '#fff'
+    },
+    setup : function(){
+        console.log('My name: ' + this.get('name') + ', My color: ' + this.get('color') + ', My Language: ' + this.get('language'));
+    },
+    getName : function(){
+        return this.get('name');
+    },
+    getColor : function(){
+        return this.get('color');
+    },
+    getLanguage : function(){
+        return this.get('language');
+    },
+    _onChangeName : function(val){
+        console.log('changeName:' + val);
+    },
+    _onChangeColor : function(val){
+        console.log('changeColor:' + val);
+    },
+    _onChangeLanguage : function(val){
+        console.log('changeLanguage:' + val);
+    }
+});
+
+var t = new T({
+    name : 'superMan',
+    color : '#000',
+    language : 'english'
+}); // My name: superMan, My color: #000, My language: english
+
+t.getName(); // superMan
+t.getColor(); // #000
+t.getLanguage(); // english
+
+t.set('name', 'Iron'); // changeName:Iron
+t.set('color', '#ccc'); // changeColor:#ccc
+t.set('language', 'chinese'); // changeLanguage:chinese
+
+t.getName(); // Iron
+t.getColor(); // #ccc
+t.getLanguage(); // chinese
+
+t.destroy();
+```

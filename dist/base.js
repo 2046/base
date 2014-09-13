@@ -18,6 +18,7 @@ define(function(require, exports, module){
             }
     
             bindChangeEvent(this);
+            copySpecialProps(this.specialProps || [], this, this.attrs, true);
             this.setup && this.setup();
         },
         get : function(key){
@@ -72,17 +73,20 @@ define(function(require, exports, module){
     });
     
     function mergeInheritedAttrs(ctx){
-        var proto, inherited, attrs, index, len;
+        var proto, inherited, attrs, index, len, specialProps;
     
         index = 0;
         inherited = [];
         attrs = ctx.attrs;
         proto = ctx.constructor.prototype;
+        specialProps = ctx.specialProps || [];
     
         while(proto){
             if(!proto.hasOwnProperty('attrs')){
                 proto.attrs = {}
             }
+    
+            copySpecialProps(specialProps, proto.attrs, proto);
     
             if(!util.isEmptyObject(proto.attrs)){
                 inherited.unshift(proto.attrs);
@@ -93,6 +97,18 @@ define(function(require, exports, module){
     
         for(len = inherited.length; index < len; index++){
             mergeAttrs(attrs, inherited[index]);
+        }
+    };
+    
+    function copySpecialProps(specialProps, receiver, supplier, isAttr2Prop){
+        var index, len, key;
+    
+        for(index = 0, len = specialProps.length; index < len; index++){
+            key = specialProps[index];
+    
+            if(supplier.hasOwnProperty(key)){
+                receiver[key] = isAttr2Prop ? receiver.get(key) :  supplier[key];
+            }
         }
     };
     
@@ -132,4 +148,5 @@ define(function(require, exports, module){
     };
     
     module.exports = Base;
+    
 });

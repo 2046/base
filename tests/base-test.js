@@ -1,5 +1,5 @@
 define(function(require, exports, module){
-    var Base,expect, sinon;
+    var Base, expect, sinon;
 
     Base = require('base');
     sinon = require('sinon');

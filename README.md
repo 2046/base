@@ -120,7 +120,7 @@ var Demo = base.extend({
 });
 ```
 
-###``get(key)``
+###get ``obj.get(key)``
 
 获取某个属性值
 
@@ -135,7 +135,7 @@ var t = new T();
 t.get('name'); // superMan
 ```
 
-###``set(key, value, options)``
+###set ``obj.set(key, value, options)``
 
 设置某个属性值
 
@@ -157,7 +157,7 @@ t.set('name', 'Iron'); // change:Iron
 t.set('name', 'Arrow', {silent : true}); // 没有触发 change 事件
 ```
 
-###``destroy()``
+###destroy ``obj.destroy()``
 
 注销实例上的所有事件并删除实例上所有的属性
 

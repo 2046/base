@@ -1,4 +1,6 @@
 define(function(require, exports, module){
+    'use strict'
+
     var Base, expect, sinon;
 
     Base = require('base');

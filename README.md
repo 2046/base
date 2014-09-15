@@ -135,7 +135,7 @@ var t = new T();
 t.get('name'); // superMan
 ```
 
-###set ``obj.set(key, value, options)``
+###set ``obj.set(key, value, [options])``
 
 设置某个属性值
 

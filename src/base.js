@@ -1,5 +1,9 @@
 'use strict'
 
+// Thanks to:
+//     - http://documentcloud.github.com/backbone/#Model
+//     - https://github.com/aralejs/base/blob/master/src/base.js
+
 var Base, Class, Events, util;
 
 util = require('./util');

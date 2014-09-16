@@ -122,7 +122,7 @@ var Demo = base.extend({
 
 ###get ``obj.get(key)``
 
-获取某个属性值
+从``attrs``上获取某个属性值
 
 ```
 var T = Base.extend({
@@ -137,7 +137,7 @@ t.get('name'); // superMan
 
 ###set ``obj.set(key, value, [options])``
 
-设置某个属性值
+设置``attrs``上某个属性值
 
 当 options.silent 的值为 true 时，不会触发属性值对应的 change 事件
 

@@ -254,7 +254,7 @@ define(function(require, exports, module){
                         height : 100
                     }
                 },
-                setup : function(){
+                init : function(){
                     this.element = $(this.get('element')).eq(0);
                 },
                 _onChangeY : function(val){
@@ -320,9 +320,6 @@ define(function(require, exports, module){
             var M = Base.extend({
                 attrs : {
                     date : 2
-                },
-                setup : function(){
-                    this.set('date', 2);
                 }
             });
 

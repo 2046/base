@@ -22,7 +22,7 @@ Base = new Class({
 
         bindChangeEvent(this);
         copySpecialProps(this.specialProps || [], this, this.attrs, true);
-        this.setup && this.setup();
+        this.init && this.init();
     },
     get : function(key){
         return this.attrs[key];

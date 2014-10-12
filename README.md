@@ -12,15 +12,15 @@ seajs.use(['base'], function(Base){
         attrs : {
             name : 'test'
         },
-        setup : function(){
+        init : function(){
             console.log('init');
         }
     });
-    
+
     var test = new Test({
         say : 'hello world'
     }); // init
-    
+
     test.get('name'); // test
     test.get('say'); // hello world
 });
@@ -30,15 +30,15 @@ require(['base'], function(Base){
         attrs : {
             name : 'test'
         },
-        setup : function(){
+        init : function(){
             console.log('init');
         }
     });
-    
+
     var test = new Test({
         say : 'hello world'
     }); // init
-    
+
     test.get('name'); // test
     test.get('say'); // hello world
 });
@@ -60,7 +60,7 @@ var Pig = Base.extend({
     talk : function(){
         console.log('我是' + this.get('name'));
     },
-    setup : function(){
+    init : function(){
         console.log('initialized');
     }
 });
@@ -97,11 +97,11 @@ var Demo = Base.extend({
 
 当使用构造函数创建实例时，给构造函数传入的属性集合，将会自动 merge 到实例 attrs 属性上。
 
-####``setup``属性，提供给子类的初始化方法，可以在此处理更多用户自定义的初始化信息
+####``init``属性，创建实例时调用的初始化方法
 
 ```
 var Demo = Base.extend({
-    setup : function(){
+    init : function(){
         console.log('hello');
     }
 });
@@ -188,7 +188,7 @@ var T = Base.extend({
         name : '',
         color : '#fff'
     },
-    setup : function(){
+    init : function(){
         console.log('My name: ' + this.get('name') + ', My color: ' + this.get('color') + ', My Language: ' + this.get('language'));
     },
     getName : function(){

@@ -4,28 +4,8 @@ Base 是使用 Class 创建的一个基础类，默认混入了 Events 模块，
 
 ##使用
 
-下载项目中 dist 目录里面的文件，并配置好模块相关信息（如：路径，别名），使用如下示例代码即可开始使用。
-
 ```
 seajs.use(['base'], function(Base){
-    var Test = Base.extend({
-        attrs : {
-            name : 'test'
-        },
-        init : function(){
-            console.log('init');
-        }
-    });
-
-    var test = new Test({
-        say : 'hello world'
-    }); // init
-
-    test.get('name'); // test
-    test.get('say'); // hello world
-});
-
-require(['base'], function(Base){
     var Test = Base.extend({
         attrs : {
             name : 'test'
@@ -107,7 +87,23 @@ var Demo = Base.extend({
 });
 ```
 
-####``_onChangeX``属性，在初始化时，会自动将 _onChangeX 方法注册到实例的 change:x 事件上
+####``onXxxx``属性，在初始化时，会自动将 onXxxx 方法注册到实例的 xxxx 事件上
+
+```
+var Demo = base.extend({
+    attrs : {
+        test : 'demo'
+        onTest : function(){
+            console.log('test');
+        }
+    }
+});
+
+var demo = new Demo();
+demo.trigger('test'); // test
+```
+
+###``_onChangeX``属性，在初始化时，会自动将 _onChangeX 方法注册到实例的 change:x 事件上
 
 ```
 var Demo = base.extend({

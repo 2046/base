@@ -29,8 +29,12 @@ if(!keys){
     };
 }
 
-o.capitalize = function(val){
+o.firstUpper = function(val){
     return val.charAt(0).toUpperCase() + val.slice(1);
+};
+
+o.firstLower = function(val){
+    return val.charAt(0).toLowerCase() + val.slice(1);
 };
 
 o.isArray = function(val){

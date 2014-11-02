@@ -316,6 +316,54 @@ define(function(require, exports, module){
             equals(counter, 3);
         });
 
+        it('tets on event method', function(){
+            var counter = 0;
+
+            var A = Base.extend({
+                attrs : {
+                    a : 1,
+                    b : 1,
+                    c : 1,
+                    onTest : function(){
+                        counter++;
+                    }
+                },
+                _onChangeA : function(){
+                    counter++;
+                },
+                _onChangeB : function(){
+                    counter++;
+                },
+                _onChangeC : function(){
+                    counter++;
+                }
+            });
+
+            counter = 0;
+            var a = new A();
+            equals(counter, 0);
+
+            counter = 0;
+            var a2 = new A({a : 2});
+            equals(counter, 0);
+
+            counter = 0;
+            a2.set('a', 3);
+            equals(counter, 1);
+
+            counter = 0;
+            var a3 = new A({a : 1,b : 2,c : 3});
+            equals(counter, 0);
+
+            counter = 0;
+            a3.set({a : 2,b : 3,c : 4});
+            equals(counter, 3);
+
+            counter = 0;
+            a3.trigger('test');
+            equals(counter, 1);
+        });
+
         it('#2 share instance', function(){
             var M = Base.extend({
                 attrs : {

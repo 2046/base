@@ -21,7 +21,7 @@ define(function(require, exports, module){
                 mergeAttrs(this.attrs, opt);
             }
     
-            bindChangeEvent(this);
+            parseEventsFromAttrs(this);
             copySpecialProps(this.specialProps || [], this, this.attrs, true);
             this.init && this.init();
         },
@@ -139,14 +139,18 @@ define(function(require, exports, module){
         return receiver;
     };
     
-    function bindChangeEvent(ctx){
-        var key, attrs;
+    function parseEventsFromAttrs(ctx){
+        var key, attrs, result;
     
         attrs = ctx.attrs;
     
         for(key in attrs){
             if(attrs.hasOwnProperty(key)){
-                ctx.on('change:' + key, ctx['_onChange' + util.capitalize(key)]);
+                if(result = key.match(/^(on)([A-Z].*)$/)){
+                    ctx.on(util.firstLower(result[2]), attrs[key]);
+                }
+    
+                ctx.on('change:' + key, ctx['_onChange' + util.firstUpper(key)]);
             }
         }
     };
